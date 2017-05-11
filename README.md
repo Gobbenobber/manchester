@@ -2,4 +2,5 @@
 
 Encodes string to manchester and returns it.
 
-* written in C
+* Written in C
+- Ain't no c++ in here yo
