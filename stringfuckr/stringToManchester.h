@@ -14,10 +14,11 @@ char* stringToManchester(char* s) {
 		char ch = s[i];
 		for (int j = 7; j >= 0; --j) {
 			if (ch & (1 << j)) {
-				strcat(manchester, "10");
+				strcat(manchester, "1");
 			}
 			else {
-				strcat(manchester, "01");
+				strcat(manchester, "0");
+				dsfjko<sgijopfads
 			}
 		}
 	}

@@ -45,9 +45,7 @@ int main() {
 	*/
 
 
-	char* str = "dasklæækladslkæadsklæ";
-
-	/*stringToMancester(str);*/
+	char* str = "Susanne";
 
 	printf("%s", stringToManchester(str));
 
