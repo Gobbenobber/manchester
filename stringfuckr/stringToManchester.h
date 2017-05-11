@@ -3,15 +3,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char* stringToManchester(char* s) {
-	if (s == NULL) return 0;							/* Hvis der ikke er input, return 0 */
-	size_t len = strlen(s);
-	char* manchester = (char *) malloc(len * 16 + 1);	// Hver char er en byte (8 bits) * 2 for manchester og + 1 til sidst for null terminator
+char* stringToManchester(char* toBeConverted) {
+	if (toBeConverted == NULL) return 0;						// Hvis der ikke er input, return 0 
+	size_t len = strlen(toBeConverted);							// Lav size_t som kan passes til malloc.
+	char* manchester = (char *) malloc(len * 2);				// Hver char er en byte (8 bits) * 2 for manchester (>og + 1 til sidst for null terminator?<)
 	manchester[0] = '\0';
 	for (size_t i = 0; i < len; ++i) {
-		char ch = s[i];
+		char ch = toBeConverted[i];								// Find næste character i array af chars som skal konverteres.
 		for (int j = 7; j >= 0; --j) {
-			if (ch & (1 << j)) {
+			if (ch & (1 << j)) {								// And hver bit med 1, startende fra LSB, concatenate manchester med relevant værdi.
 				strcat(manchester, "10");
 			}
 			else {
