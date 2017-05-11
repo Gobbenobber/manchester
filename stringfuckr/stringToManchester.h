@@ -11,7 +11,7 @@ char* stringToManchester(char* toBeConverted) {
 	for (size_t i = 0; i < len; ++i) {
 		char ch = toBeConverted[i];								// Find næste character i array af chars som skal konverteres.
 		for (int j = 7; j >= 0; --j) {
-			if (ch & (1 << j)) {								// And hver bit med 1, startende fra LSB, concatenate manchester med relevant værdi.
+			if (ch & (1 << j)) {								// AND hver bit med 1, startende fra LSB. Vi benytter G. E. Thomas manchester kode. 1 = "10" og 0 = "01".
 				strcat(manchester, "10");
 			}
 			else {
@@ -19,5 +19,5 @@ char* stringToManchester(char* toBeConverted) {
 			}
 		}
 	}
-	return manchester;
+	return manchester;											// Returnér manchesterkoden
 }

@@ -11,6 +11,8 @@ int main() {
 
 	printf("%s", stringToManchester(str));
 
-	int x;
-	scanf("%d", &x);
+	while (1)
+	{
+		
+	}
 } 
