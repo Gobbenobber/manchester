@@ -3,8 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//using namespace std;
-
 char* stringToManchester(char* s) {
 	if (s == NULL) return 0;							/* Hvis der ikke er input, return 0 */
 	size_t len = strlen(s);
@@ -23,41 +21,3 @@ char* stringToManchester(char* s) {
 	}
 	return manchester;
 }
-
-
-//void stringToMancester(char* inString)
-//{
-//	int bitArray[sizeof(inString)][7];
-//	char *temp;
-//	char bitArrayTotal[sizeof(inString)][15];
-//
-//	for (temp = inString; *temp; ++temp)
-//	{
-//		int bit_index;
-//		for (bit_index = 14; bit_index >= 0; bit_index -= 2)
-//		{
-//			int bit = *temp >> bit_index & 1;
-//			bitArray[bit_index][*temp] = bit;			//Remember to cycle through with [7:0][0:String]
-//
-//			if (bitArray[bit_index][*temp] == 0)
-//			{
-//				bitArrayTotal[bit_index][*temp] = '0';
-//				bitArrayTotal[bit_index + 1][*temp] = '1';
-//			}
-//			else if (bitArray[bit_index][*temp] == 1)
-//			{
-//				bitArrayTotal[bit_index][*temp] = '1';
-//				bitArrayTotal[bit_index + 1][*temp] = '0';
-//			}
-//		}
-//	}
-//	
-//	for (char* i = inString; *i; ++i)
-//	{
-//		for (int j = 14; j >= 0; j -= 2)
-//		{
-//			cout << bitArrayTotal[j][*i];
-//		}
-//		cout << endl;
-//	}
-//}
