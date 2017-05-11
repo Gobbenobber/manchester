@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7433A971-4360-494E-BD77-989570D035ED}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>stringfuckr</RootNamespace>
+    <RootNamespace>stringToManchester</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
     <ProjectName>stringToManchester</ProjectName>
   </PropertyGroup>
