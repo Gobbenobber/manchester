@@ -13,7 +13,7 @@ char* stringToManchester(char* toBeConverted)
 	manchester[0] = '\0';
 	for (size_t i = 0; i < len; ++i) 
 	{
-		char ch = toBeConverted[i];								// Find næste character i array af chars som skal konverteres.
+		unsigned char ch = toBeConverted[i];								// Find næste character i array af chars som skal konverteres.
 		for (int j = 7; j >= 0; --j) 
 		{
 			if (ch & (1 << j)) {								// AND hver bit med 1, startende fra LSB. Vi benytter G. E. Thomas manchester kode. 1 = "10" og 0 = "01".
@@ -30,23 +30,24 @@ char* stringToManchester(char* toBeConverted)
 char* mancesterToString(char* toBeConverted) {
 	if (toBeConverted == NULL) return 0;
 	size_t len = (strlen(toBeConverted));
-	char* tempString = (char *)malloc(len/2);
+	char* tempString = (char *) malloc(len/2+1);
 	tempString[0] = '\0';
 
-	for (size_t i = 0; i < len; ++i)
+	for (size_t i = 0; i < len/2; i++)
 	{
-		char ch = toBeConverted[i];
-		for (int j = 15; j >= 0; j -= 2)
-		{
-			if (ch & (1 << j) && ch & (0 << j+1))
+			if (toBeConverted[i] == "0" && toBeConverted[i + 1] == "1")
 			{
 				strcat(tempString, "0");
 			}
-			else
+
+			else if (toBeConverted[i] == "1" && toBeConverted[i + 1] == "0")
 			{
 				strcat(tempString, "1");
 			}
-		}
+			else
+			{
+				strcat(tempString, "FUCK");
+			}
 	}
 	return tempString;
 }
