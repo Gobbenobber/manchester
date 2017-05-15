@@ -27,15 +27,13 @@ char* stringToManchester(char* toBeConverted)
 
 char* mancesterToString(char* toBeConverted) {
 	if (toBeConverted == NULL) return 0;
-	int len = (strlen(toBeConverted) / 16) - 1;
-	char* tempString = (char *)malloc(len * 8);
-	char* toString = (char *)malloc(len);
-	toString[0] = '\0';
+	size_t len = (strlen(toBeConverted)/2);
+	char* tempString = (char *)malloc(len);
 	tempString[0] = '\0';
 
-	for (int i = 0; i <= len; i++)
+	for (int i = 0; i <= len; ++i)
 	{
-		for (int j = 0; j < 16; j += 2)
+		for (int j = 15; j >= 0; j -= 2)
 		{
 			if ((toBeConverted[(i * 16) + j] == '0') && (toBeConverted[((i * 16) + j) + 1] == '1'))
 			{
