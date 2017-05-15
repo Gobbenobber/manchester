@@ -11,9 +11,11 @@ char* stringToManchester(char* toBeConverted)
 	size_t len = strlen(toBeConverted);							// Lav size_t som kan passes til malloc.
 	char* manchester = (char *) malloc(len * 2);				// Hver char er en byte (8 bits) * 2 for manchester (>og + 1 til sidst for null terminator?<)
 	manchester[0] = '\0';
-	for (size_t i = 0; i < len; ++i) {
+	for (size_t i = 0; i < len; ++i) 
+	{
 		char ch = toBeConverted[i];								// Find næste character i array af chars som skal konverteres.
-		for (int j = 7; j >= 0; --j) {
+		for (int j = 7; j >= 0; --j) 
+		{
 			if (ch & (1 << j)) {								// AND hver bit med 1, startende fra LSB. Vi benytter G. E. Thomas manchester kode. 1 = "10" og 0 = "01".
 				strcat(manchester, "10");
 			}
@@ -27,15 +29,16 @@ char* stringToManchester(char* toBeConverted)
 
 char* mancesterToString(char* toBeConverted) {
 	if (toBeConverted == NULL) return 0;
-	size_t len = (strlen(toBeConverted)/2);
-	char* tempString = (char *)malloc(len);
+	size_t len = (strlen(toBeConverted));
+	char* tempString = (char *)malloc(len/2);
 	tempString[0] = '\0';
 
-	for (int i = 0; i <= len; ++i)
+	for (size_t i = 0; i < len; ++i)
 	{
+		char ch = toBeConverted[i];
 		for (int j = 15; j >= 0; j -= 2)
 		{
-			if ((toBeConverted[(i * 16) + j] == '0') && (toBeConverted[((i * 16) + j) + 1] == '1'))
+			if (ch & (1 << j) && ch & (0 << j+1))
 			{
 				strcat(tempString, "0");
 			}
