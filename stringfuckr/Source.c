@@ -1,6 +1,6 @@
 #pragma once
 
-#include "stringToManchester.h"
+#include "Manchester.h"
 #include <stdio.h>
 
 /* Test af stringToManchester */

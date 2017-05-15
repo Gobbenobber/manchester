@@ -28,7 +28,7 @@ char* stringToManchester(char* toBeConverted)
 char* mancesterToString(char* toBeConverted) {
 	if (toBeConverted == NULL) return 0;
 	int len = (strlen(toBeConverted) / 16) - 1;
-	char* tempString = (char *)malloc(len * 8);
+	char* tempString = (char *) malloc(len * 8);
 	char* toString = (char *)malloc(len);
 	toString[0] = '\0';
 	tempString[0] = '\0';
