@@ -5,13 +5,13 @@
 #include <stdlib.h>
 
 
-char* stringToManchester(char* toBeConverted) 
+unsigned char* stringToManchester(unsigned char* toBeConverted) 
 {
 	if (toBeConverted == NULL) return 0;								// Hvis der ikke er input, return 0 
-	size_t len = strlen(toBeConverted);									// Lav size_t som kan passes til malloc.
+	int len = strlen(toBeConverted);									// Lav size_t som kan passes til malloc.
 	unsigned char* manchester = calloc(len*2,8);						// Alloker hukommelse
 	manchester[0] = '\0';
-	for (size_t i = 0; i < len; ++i) {
+	for (int i = 0; i < len; ++i) {
 		unsigned char ch = toBeConverted[i];							// Find næste character i array af chars som skal konverteres.
 		for (int j = 7; j >= 0; --j) {
 			if (ch & (1 << j)) {										// AND hver bit med 1, startende fra LSB. Vi benytter G. E. Thomas manchester kode. 1 = "10" og 0 = "01".
@@ -27,9 +27,9 @@ char* stringToManchester(char* toBeConverted)
 
 unsigned char* mancesterToString(unsigned char* toBeConverted) {
 	if (toBeConverted == NULL) return 0;
-	size_t len = sizeof(toBeConverted);
-	unsigned char* tempString = calloc(len*8, 8);
-	unsigned char* toString = calloc(len, 8*len);
+	int len = ((strlen(toBeConverted)/2)/8);
+	unsigned char* tempString = calloc(len, 8);
+	unsigned char* toString = calloc(len, 8);
 	tempString[0] = '\0';
 	toString[0] = '\0';
 
