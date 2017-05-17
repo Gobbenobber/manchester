@@ -9,10 +9,10 @@ char* stringToManchester(char* toBeConverted)
 {
 	if (toBeConverted == NULL) return 0;						// Hvis der ikke er input, return 0 
 	size_t len = strlen(toBeConverted);							// Lav size_t som kan passes til malloc.
-	char* manchester = (char *) malloc(len * 2);				// Hver char er en byte (8 bits) * 2 for manchester (>og + 1 til sidst for null terminator?<)
+	unsigned char* manchester = (unsigned char *) malloc(len * 2);				// Hver char er en byte (8 bits) * 2 for manchester (>og + 1 til sidst for null terminator?<)
 	manchester[0] = '\0';
 	for (size_t i = 0; i < len; ++i) {
-		char ch = toBeConverted[i];								// Find næste character i array af chars som skal konverteres.
+		unsigned char ch = toBeConverted[i];								// Find næste character i array af chars som skal konverteres.
 		for (int j = 7; j >= 0; --j) {
 			if (ch & (1 << j)) {								// AND hver bit med 1, startende fra LSB. Vi benytter G. E. Thomas manchester kode. 1 = "10" og 0 = "01".
 				strcat(manchester, "10");
@@ -25,13 +25,13 @@ char* stringToManchester(char* toBeConverted)
 	return manchester;											// Returnér manchesterkoden
 }
 
-char* mancesterToString(char* toBeConverted) {
+unsigned char* mancesterToString(unsigned char* toBeConverted) {
 	if (toBeConverted == NULL) return 0;
 	int len = (strlen(toBeConverted) / 16) - 1;
-	char* tempString = (char *) malloc(len * 8);
-	char* toString = (char *)malloc(len);
-	toString[0] = '\0';
+	unsigned char* tempString = (unsigned char *)malloc(len * 8);
+	unsigned char* toString = (unsigned char *)malloc(len);
 	tempString[0] = '\0';
+	toString[0] = '\0';
 
 	for (int i = 0; i <= len; i++)
 	{
@@ -47,5 +47,40 @@ char* mancesterToString(char* toBeConverted) {
 			}
 		}
 	}
-	return tempString;
+
+	printf("%s \n", tempString);
+
+	printf("%d", (len + 1) * 8);
+	
+	
+	
+	
+	int i = 0;
+	int z = 7;
+
+		for (int j = 0; j <= ((len + 1) * 8) - 1; j++)
+		{
+			if (z < 0)
+			{	
+				z = 7;
+				i++;
+				toString[i] = '\0';
+			}
+
+			if (tempString[j] == '1')
+			{
+				toString[i] |= (1 << z);
+				z--;
+			}
+			else if (tempString[j] == '0')
+			{
+				toString[i] &= (255 - (0 << z));
+				z--;
+			}
+			else if (tempString[j] == '\0')
+			{
+				toString[i] = '\0';
+			}
+		}				
+	return toString;
 }
