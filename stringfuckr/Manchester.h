@@ -46,14 +46,7 @@ unsigned char* mancesterToString(unsigned char* toBeConverted) {
 				strcat(tempString, "1");
 			}
 		}
-	}
-
-	printf("%s \n", tempString);
-
-	printf("%d", (len + 1) * 8);
-	
-	
-	
+	}	
 	
 	int i = 0;
 	int z = 7;
@@ -81,6 +74,7 @@ unsigned char* mancesterToString(unsigned char* toBeConverted) {
 			{
 				toString[i] = '\0';
 			}
-		}				
+		}	
+		toString[len + 1] = '\0';
 	return toString;
 }
