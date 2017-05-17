@@ -8,11 +8,11 @@
 int main() {
 
 	unsigned char* str = "code";	
-	//char* str2 = "0110100101011010011010011010101001101001011001010110100101100110";
+	char* str2 = "0110100101011010011010011010101001101001011001010110100101100110";
 
-	//printf("%s \n", stringToManchester(str));
+	printf("%s \n", stringToManchester(str));
 
-	//printf("%s \n", mancesterToString(str2));
+	printf("%s \n", mancesterToString(str2));
 	printf("%s \n", mancesterToString(stringToManchester(str)));
 
 	while (1)

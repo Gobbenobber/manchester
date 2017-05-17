@@ -29,7 +29,7 @@ unsigned char* mancesterToString(unsigned char* toBeConverted) {
 	if (toBeConverted == NULL) return 0;
 	int len = (sizeof(toBeConverted));
 	unsigned char* tempString = calloc(len*8, 8);
-	unsigned char* toString = calloc(len*8, 4);
+	unsigned char* toString = calloc(len, 8*len);
 	tempString[0] = '\0';
 	toString[0] = '\0';
 
