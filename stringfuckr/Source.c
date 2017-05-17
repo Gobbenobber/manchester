@@ -14,6 +14,10 @@ int main() {
 
 	printf("%s \n", mancesterToString(str2));
 	printf("%s \n", mancesterToString(stringToManchester(str)));
+	printf("%s \n", mancesterToString(stringToManchester(str)));
+	printf("%s \n", mancesterToString(stringToManchester(str)));
+	printf("%s \n", mancesterToString(stringToManchester(str)));
+	printf("%s \n", mancesterToString(stringToManchester(str)));
 
 	while (1)
 	{	

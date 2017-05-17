@@ -9,7 +9,7 @@ char* stringToManchester(char* toBeConverted)
 {
 	if (toBeConverted == NULL) return 0;								// Hvis der ikke er input, return 0 
 	size_t len = strlen(toBeConverted);									// Lav size_t som kan passes til malloc.
-	unsigned char* manchester = (unsigned char *) malloc((len * 2) + 1);		// Hver char er en byte (8 bits) * 2 for manchester (>og + 1 til sidst for null terminator?<)
+	unsigned char* manchester = calloc(len*2,8);						// Alloker hukommelse
 	manchester[0] = '\0';
 	for (size_t i = 0; i < len; ++i) {
 		unsigned char ch = toBeConverted[i];							// Find næste character i array af chars som skal konverteres.
@@ -27,7 +27,7 @@ char* stringToManchester(char* toBeConverted)
 
 unsigned char* mancesterToString(unsigned char* toBeConverted) {
 	if (toBeConverted == NULL) return 0;
-	int len = (sizeof(toBeConverted));
+	size_t len = sizeof(toBeConverted);
 	unsigned char* tempString = calloc(len*8, 8);
 	unsigned char* toString = calloc(len, 8*len);
 	tempString[0] = '\0';
