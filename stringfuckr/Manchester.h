@@ -8,11 +8,12 @@
 unsigned char* stringToManchester(unsigned char* toBeConverted) 
 {
 	if (toBeConverted == NULL) return 0;									// Hvis der ikke er input, return 0 
-	int len = sizeof(toBeConverted);										// Lav size_t som kan passes til malloc.
-	unsigned char* manchester = calloc(len*2,8);						// Alloker hukommelse
+	size_t len = strlen(toBeConverted);										// Lav size_t som kan passes til calloc.
+	unsigned char* manchester = calloc(len*2,8);							// Alloker hukommelse
 	manchester[0] = '\0';
-	size_t counter = 8;
-	size_t t = 0;
+	int counter = 8;
+	int t = 0;
+
 	for (int i = 0; i <= len; ++i) 
 	{
 		unsigned char ch = toBeConverted[i];
@@ -46,57 +47,56 @@ unsigned char* stringToManchester(unsigned char* toBeConverted)
 		}	
 		--t;											// Find næste character i array af chars som skal konverteres.
 	}
-	return manchester;													// Returnér manchesterkoden
+	return manchester;									// Returnér manchesterkoden
 }
 
 unsigned char* mancesterToString(unsigned char* toBeConverted) 
 {
 	if (toBeConverted == NULL) return 0;
-	int len = ((strlen(toBeConverted)/2)/8);
-	unsigned char* tempString = calloc(len, 8);
+	size_t len = (strlen(toBeConverted)/2);
 	unsigned char* toString = calloc(len, 8);
-	tempString[0] = '\0';
 	toString[0] = '\0';
-
-	for (int i = 0; i <= len; i++)
-	{
-		for (int j = 0; j < 16; j += 2)
-		{
-			if ((toBeConverted[(i * 16) + j] == '0') && (toBeConverted[((i * 16) + j) + 1] == '1'))
-			{
-				strcat(tempString, "0");
-			}
-			else
-			{
-				strcat(tempString, "1");
-			}
-		}
-	}	
-	
 	int i = 0;
 	int z = 7;
-
-		for (int j = 0; j <= ((len + 1) * 8); j++)
+	int p = 7;
+	
+		for (int j = 0; j <= len * 2; j++)
 		{
-			if (z < 0)
-			{	
-				z = 7;
-				i++;
-				toString[i] = '\0';
-			}
-			if (tempString[j] == '1')
+			unsigned char ch = toBeConverted[j];
+
+			for (size_t timestocheck = 0;  timestocheck <= 3;  timestocheck++)
 			{
-				toString[i] |= (1 << z);
-				z--;
-			}
-			else if (tempString[j] == '0')
-			{
-				toString[i] &= (255 - (0 << z));
-				z--;
-			}
-			else if (tempString[j] == NULL)
-			{
-				toString[i+1] = '\0';
+				if (ch == NULL)
+				{
+					toString[i+1] = '\0';
+					break;
+				}
+
+				if (p < 0)
+				{
+					p = 7;
+				}
+
+				if (z < 0)
+				{
+					z = 7;
+					i++;
+					toString[i] = '\0';
+				}
+
+				if (ch & (1 << p) && (ch | (0 << p - 1)))
+				{
+					toString[i] |= (1 << z);
+					z--;
+					p -= 2;
+				}
+
+				else /*if (ch & (0 << z) && (ch | (1 << z - 1)))*/
+				{
+					toString[i] &= (255 - (0 << z));
+					z--;
+					p -= 2;
+				}
 			}
 		}	
 	return toString;

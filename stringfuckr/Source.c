@@ -3,19 +3,21 @@
 #include "Manchester.h"
 #include <stdio.h>
 
-/* Test af stringToManchester og manchesterToString */
+
 
 int main() {
 
+	/* Test af stringToManchester */
+
 	unsigned char* str = "ABCD";	
-	printf("%s \n", stringToManchester(str));
 
+	printf("\n\n\t\t\t Den indtastede tekststreng er: %s \n", str);
 
-
-	//printf("%s \n", stringToManchester(str));
+	printf("\n\n\t\t\t Oversat til Manchester laeses dette (som chars): %s \n", stringToManchester(str));
+	free(stringToManchester(str));
 	
-	printf("%s \n", mancesterToString(stringToManchester(str)));
-	
+	printf("\n\n\t\t\t Oversat tilbage til almindelig binaer kode laeses det igen (som chars) som: %s \n", mancesterToString(stringToManchester(str)));
+	free(mancesterToString(stringToManchester(str)));
 
 	while (1)
 	{	
