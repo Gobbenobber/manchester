@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Manchester.c" />
     <ClCompile Include="Source.c" />
   </ItemGroup>
   <ItemGroup>
