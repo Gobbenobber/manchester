@@ -8,8 +8,11 @@
 int main() {
 
 	unsigned char* str = "ABCD";	
-
 	printf("%s \n", stringToManchester(str));
+
+
+
+	//printf("%s \n", stringToManchester(str));
 	
 	printf("%s \n", mancesterToString(stringToManchester(str)));
 	
