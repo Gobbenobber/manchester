@@ -10,7 +10,7 @@ unsigned char* stringToManchester(unsigned char* toBeConverted)
 {
 	if (toBeConverted == NULL) return 0;									// Hvis der ikke er input, return 0 
 	size_t len = strlen(toBeConverted);										// Lav size_t som kan passes til calloc.
-	unsigned char* manchester = calloc(len * 2, 8);							// Alloker hukommelse
+	unsigned char* manchester = calloc(len * 2 + 1, 1);							// Alloker hukommelse
 	manchester[0] = '\0';
 	int counter = 8;
 	int t = 0;
@@ -55,7 +55,7 @@ unsigned char* mancesterToString(unsigned char* toBeConverted)
 {
 	if (toBeConverted == NULL) return 0;
 	size_t len = (strlen(toBeConverted) / 2);
-	unsigned char* toString = calloc(len, 8);
+	unsigned char* toString = calloc(len+1, 1);
 	toString[0] = '\0';
 	int i = 0;
 	int z = 7;
