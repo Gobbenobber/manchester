@@ -3,11 +3,11 @@
 #include "Manchester.h"
 #include <stdio.h>
 
-	/* Test af Manchester.h 
-		D*/
+	/* Test af Manchester.h */
 
 int main() {
 
+	/* Streng som skal sendes via X10 som manchester kode */
 	const unsigned char* str = "ABCD";	
 
 	printf("\n\n\t\t\t Den indtastede tekststreng er: %s \n", str);
