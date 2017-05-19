@@ -19,5 +19,6 @@
 // Version: 1.01RC
 // De to nedenstående funktioner kan benyttes til at kovertere en given tekststreng til Manchester kode og benytter dynamisk hukommelse til at opnå dette.
 
-unsigned char* stringToManchester(unsigned char* toBeConverted);
-unsigned char* mancesterToString(unsigned char* toBeConverted);
+const unsigned char* stringToManchester(const unsigned char* toBeConverted);
+unsigned char* mancesterToString(const unsigned char* toBeConverted);
+void freePtr();
