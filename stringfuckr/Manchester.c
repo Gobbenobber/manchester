@@ -53,8 +53,8 @@ unsigned char* mancesterToString(const unsigned char* toBeConverted)
 {
 	if (toBeConverted == NULL) return 0;
 	int len = (strlen(toBeConverted) / 2);
-	unsigned char* toString = calloc((len+1), sizeof(unsigned char));
-	if (toString == NULL)
+	manchesterPtr = calloc((len+1), sizeof(unsigned char));
+	if (manchesterPtr == NULL)
 	{
 		return NULL;
 	}
@@ -70,7 +70,7 @@ unsigned char* mancesterToString(const unsigned char* toBeConverted)
 		{
 			if (ch == '\0')
 			{
-				toString[i + 1] = '\0';
+				manchesterPtr[i + 1] = '\0';
 				break;
 			}
 			if (p < 0)
@@ -81,21 +81,21 @@ unsigned char* mancesterToString(const unsigned char* toBeConverted)
 			{
 				z = 7;
 				i++;
-				toString[i] = '\0';
+				manchesterPtr[i] = '\0';
 			}
 			if (ch & (1 << p) && (ch | (0 << (p - 1))))
 			{
-				toString[i] |= (1 << z);
+				manchesterPtr[i] |= (1 << z);
 				z--;
 				p -= 2;
 			}
 			else /*if (ch & (0 << z) && (ch | (1 << z - 1)))*/
 			{
-				toString[i] &= (255 - (0 << z));
+				manchesterPtr[i] &= (255 - (0 << z));
 				z--;
 				p -= 2;
 			}
 		}
 	}
-	return toString;
+	return manchesterPtr;
 }
