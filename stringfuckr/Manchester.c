@@ -15,7 +15,7 @@ const unsigned char* stringToManchester(const unsigned char* toBeConverted)
 {
 	if (toBeConverted == NULL) return 0;									// Hvis der ikke er input, return 0 
 	int len = strlen(toBeConverted);										// Lav size_t som kan passes til calloc.
-	manchesterPtr = (unsigned char *)calloc(((len) * 2)+1, 1);			// Alloker hukommelse
+	manchesterPtr = (unsigned char *)calloc((len * 2)+1, 1);			// Alloker hukommelse
 	int counter = 8;
 	int t = 0;
 
