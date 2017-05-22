@@ -16,7 +16,6 @@ int main() {
 
 	printf("\n\n\t\t\t Oversat til Manchester laeses dette (som chars): %s \n", stringToManchester(str));
 
-
 	/* Test af manchesterToString() */
 
 	printf("\n\n\t\t\t Oversat tilbage til almindelig binaer kode laeses det igen (som chars) som: %s \n", mancesterToString(stringToManchester(str)));
